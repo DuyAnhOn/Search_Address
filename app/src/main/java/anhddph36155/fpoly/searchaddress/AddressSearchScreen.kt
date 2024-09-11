@@ -48,8 +48,7 @@ fun AddressSearchScreen(viewModel: SearchViewModel) {
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .border(1.dp, Color.White, shape = RoundedCornerShape(20.dp))
-                ,
+                .border(0.dp, Color.White, shape = RoundedCornerShape(20.dp)),
             value = query,
             onValueChange = { newText ->
                 query = newText
@@ -94,14 +93,16 @@ fun AddressSearchScreen(viewModel: SearchViewModel) {
                             painterResource(id = R.drawable.location),
                             contentDescription = null
                         )
-                        HightlightedText(fullText = address.address.label, keyword = query)
+                        Box(modifier = Modifier.weight(1f)){
+                            HightlightedText(fullText = address.address.label, keyword = query)
+                        }
                         IconButton(
                             onClick = { OpenGoogleMaps(address.address.label, context) },
                             modifier = Modifier
                                 .size(20.dp)
-                        ){
+                        ) {
                             Icon(
-                                painterResource(id = R.drawable.location),
+                                painterResource(id = R.drawable.right), //Đoạn này em không hiểu sao icon không hiển thị =((
                                 contentDescription = null,
                             )
                         }
